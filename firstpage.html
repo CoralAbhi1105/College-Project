@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+  <title>Covid-19 Map</title>
+
+  <style>
+    * {
+      margin: 0px;
+      box-sizing: border-box;
+      padding: 0px;
+    }
+
+    #map {
+      margin: auto;
+      width: 70vw;
+      height: 80vh;
+    }
+
+    .head {
+      background-color: orange;
+      padding: 10px 12px;
+      color: black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-family: 'Yeon Sung', cursive;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .left img {
+      width: 80px;
+      margin-left: 10px;
+    }
+
+    .left strong {
+      margin-left: 25px;
+      font-weight: bolder;
+      font-size: 20px;
+    }
+
+    .mid {
+      display: block;
+      width: 60%;
+    }
+
+    .mid ul{
+      text-align: center;
+    }
+
+    .mid li {
+      display: inline;
+    }
+
+    .mid li a {
+      padding: 8px 15px;
+      text-decoration: none;
+      color: black;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .mid li a:active,
+    .mid li a:hover {
+      color: rgb(255, 255, 255);
+      text-decoration: underline;
+      background-color: rgb(0, 0, 0);
+    }
+
+    .right a{
+      padding: 5px 6px;
+      text-decoration: none;
+      color: black;
+      border: 2px solid black;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .contain {
+      max-width: 70%;
+      background-color: rgb(255, 255, 255);
+      margin: 12px auto;
+      padding: 35px 60px;
+      border-radius: 12px;
+    }
+
+.q{
+  padding: 12px 0px;
+}
+
+.box{
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+  background-color: grey;
+}
+
+.bubbles{
+width: 100%;
+display: flex;
+align-items: center;
+/* position: absolute; */
+justify-content: space-around;
+bottom: -70px;
+}
+
+@keyframes bubble{
+  0%{
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  50%{
+    
+    opacity: 1;
+  }
+
+  75%{
+    
+    opacity: 1;
+  }
+
+  100%{
+    transform: translateY(-80vh);
+    opacity: 0;
+  }
+}
+
+    .bubbles img{
+    width: 80px;
+    animation: bubble 10s linear infinite;
+    }
+
+    .bubbles img:nth-child(1)
+    {animation-delay: 3s;
+    width: 35px;}
+    .bubbles img:nth-child(2)
+    {animation-delay: 1s;
+      width: 35px;}
+    .bubbles img:nth-child(3)
+    {animation-delay: 2s;
+      width: 40px;}
+    .bubbles img:nth-child(4)
+    {animation-delay: 6s;
+      width: 30px;}
+    .bubbles img:nth-child(5)
+    {animation-delay: 4s;
+      width: 52px;}
+    .bubbles img:nth-child(6)
+    {animation-delay: 7s;
+      width: 38px;}
+    .bubbles img:nth-child(8)
+    {animation-delay: 5s;
+      width: 25px;}
+
+  </style>
+</head>
+
+<body>
+  <header class="head">
+    <div class="left">
+      <img src="/imgs/a2.png" alt="" srcset="">
+      <strong>Corona <br> Cases API</strong>
+    </div>
+
+    <div class="mid">
+      <ul class="bar">
+        <li><a href="/firstpage.html" class="active">Home</a></li>
+        <li><a href="#" class="active">About</a></li>
+        <li><a href="https://www.vaidam.com/hospitals/india" class="active">Hospitals</a></li>
+        <li><a href="#" class="active">Contact us</a></li>
+      </ul>
+    </div>
+
+    <div class="right">
+      <a href="https://ask-chat-app.herokuapp.com/">Chat for any query</a>
+    </div>
+  </header>
+
+  <section class="contain">
+    <h1 style="text-align: center; font-size: 2rem; font-family: 'Righteous', cursive;" ;>
+     Covid-19 Stay Home, Stay Safe
+    </h1>
+
+    <div class="box">
+      <h2 style="margin-top: 1.4rem">#IndiaFightsCorona COVID-19</h2>
+      <p style="margin-top: 1rem">
+        Government of India is taking all necessary steps to ensure that we
+        are prepared well to face the challenge and threat posed by the
+        growing pandemic of COVID-19 the Corona Virus. The most important
+        factor in preventing the spread of the Virus locally is to empower the
+        citizens with the right information and taking precautions as per the
+        advisories being issued by Ministry of Health & Family Welfare.
+      </p>
+    </div>
+
+    <div class="box">
+      <h2 style="margin-top: 1.3rem">How to protect yourself</h2>
+      <h3 style="margin-top: 1rem">Do</h3>
+      <p>
+      <ul>
+        <li>Avoid close contact with people who are sick.</li>
+        <li>Avoid touching your eyes, nose, and mouth with unwashed hands.</li>
+        <li>Clean and disinfect frequently touched objects and surfaces.</li>
+        <li>Use an alcohol-based hand sanitizer with at least 60% alcohol if you have symptoms of acute respiratory
+          illness.</li>
+        <li>Multiple times a day, wash your hands often with soap and water for at least 20 seconds, especially after
+          going to the bathroom, before eating, and after blowing your nose, coughing, or sneezing.</li>
+      </ul>
+      </p>
+
+      <h3 style="margin-top: 1rem">Don't</h3>
+      <p>
+      <ul>
+        <li>Touch your eyes, nose, or mouth if your hand are not clean</li>
+      </ul>
+      </p>
+    </div>
+
+
+    <div class="box">
+      <h2 style="margin-top: 1.3rem">#FAQs - Frequently asked questions</h2>
+      
+      <div class="q">
+      <p>Q: What are the symptoms of corona virus disease?</p>
+
+      <p>A: The symptoms that are currently being seen with COVID-19 are fever and respiratory symptoms such as cough
+        and shortness of breath.</p>
+      </div>
+
+      <div class="q">
+        <p>Q: What are the symptoms of corona virus disease?</p>
+  
+        <p>A: The symptoms that are currently being seen with COVID-19 are fever and respiratory symptoms such as cough
+          and shortness of breath.</p>
+        </div>
+        <div class="q">
+        <p>Q: What are the symptoms of corona virus disease?</p>
+  
+        <p>A: The symptoms that are currently being seen with COVID-19 are fever and respiratory symptoms such as cough
+          and shortness of breath.</p>
+        </div>
+        <div class="q">
+        <p>Q: What are the symptoms of corona virus disease?</p>
+  
+        <p>A: The symptoms that are currently being seen with COVID-19 are fever and respiratory symptoms such as cough
+          and shortness of breath.</p>
+        </div>
+        <div class="q">
+        <p>Q: What are the symptoms of corona virus disease?</p>
+  
+        <p>A: The symptoms that are currently being seen with COVID-19 are fever and respiratory symptoms such as cough
+          and shortness of breath.</p>
+        </div>
+        <div class="q">
+        <p>Q: What are the symptoms of corona virus disease?</p>
+  
+        <p>A: The symptoms that are currently being seen with COVID-19 are fever and respiratory symptoms such as cough
+          and shortness of breath.</p>
+        </div>
+        
+      </div>
+      
+      <div class="bubbles">
+        <img src="./imgs/a1logo1.png" alt="" srcset="">
+        <img src="./imgs/a1logo1.png" alt="" srcset="">
+        <img src="./imgs/a1logo1.png" alt="" srcset="">
+        <img src="./imgs/a1logo1.png" alt="" srcset="">
+        <img src="./imgs/a1logo1.png" alt="" srcset="">
+        <img src="./imgs/a1logo1.png" alt="" srcset="">
+      </div>
+
+  </section>
+
+  <div id="map"></div>
+
+  <div style="text-align: center; font-size: 2rem; font-family: 'Righteous', cursive;">Thank you</div>
+
+
+</body>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+<script>
+  mapboxgl.accessToken =
+    "pk.eyJ1Ijoia2FzaHlhcGtpbmctMTQzIiwiYSI6ImNrcGZ1MHZmczBuMHUybm80YzI2cTJuZWMifQ.WZydNzYbXIh57K_cWccd2A";
+  var map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/mapbox/streets-v11",
+    center: [77.1025, 28.7041], // starting position [lng, lat]
+    zoom: 2, // starting zoom
+  });
+</script>
+
+<script src="/firstpage.js"></script>
+
+</html>
