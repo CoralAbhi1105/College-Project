@@ -1,11 +1,15 @@
 {
   "name": "corona-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "firstpage.js",
+  "description": "Project Description",
+  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serve",
   },
-  "author": "",
+   "dependencies": {
+    "serve": "^10.0.1"
+  },
+  
+  "author": "Abhishek Kashyap",
   "license": "ISC"
 }
